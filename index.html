@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Name service demo</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
+    ></script>
+  </head>
+  <body>
+    <section class="section">
+      <div class="container">
+        <h1 class="title">
+          Name services demo
+        </h1>
+        <label class="label">Payer identity</label>
+        <div class="field has-addons">
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              placeholder="Payer identity"
+              id="payer"
+            />
+          </div>
+          <div class="control">
+            <a class="button is-static" id="payer-output"> </a>
+          </div>
+        </div>
+        <label class="label">Expected amount</label>
+        <div class="field has-addons">
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              placeholder="Expected amount"
+              id="amount"
+            />
+          </div>
+          <div class="control">
+            <a class="button is-static">
+              ETH
+            </a>
+          </div>
+        </div>
+        <label class="label">Payment address</label>
+        <div class="field has-addons">
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              placeholder="Payment address"
+              id="payment"
+            />
+          </div>
+          <div class="control">
+            <a class="button is-static" id="payment-output"> </a>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <button class="button is-link" id="submit">Submit</button>
+          </div>
+        </div>
+        <pre id="dump"></pre>
+      </div>
+    </section>
+
+    <script src="./main.js"></script>
+  </body>
+</html>

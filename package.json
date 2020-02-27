@@ -10,6 +10,8 @@
   "dependencies": {
     "@ensdomains/address-encoder": "^0.1.3",
     "axios": "^0.19.2",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.0",
     "web3": "^1.2.6"
   }
 }

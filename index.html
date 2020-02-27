@@ -12,6 +12,7 @@
       defer
       src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
     ></script>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <section class="section">
@@ -20,7 +21,7 @@
           Name services demo
         </h1>
         <label class="label">Payer identity</label>
-        <div class="field has-addons">
+        <div class="field has-addons" id="payer-field">
           <div class="control">
             <input
               class="input"
@@ -50,7 +51,7 @@
           </div>
         </div>
         <label class="label">Payment address</label>
-        <div class="field has-addons">
+        <div class="field has-addons" id="payment-field">
           <div class="control">
             <input
               class="input"
@@ -63,9 +64,9 @@
             <a class="button is-static" id="payment-output"> </a>
           </div>
         </div>
-        <div class="field">
+        <div class="field has-addons" id="submit-field">
           <div class="control">
-            <button class="button is-link" id="submit">Submit</button>
+            <button class="button is-info" id="submit">Submit</button>
           </div>
         </div>
         <pre id="dump"></pre>

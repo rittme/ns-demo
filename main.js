@@ -22,14 +22,13 @@ const resolveAddress = address => {
   return "Invalid address";
 };
 
+const iovUrl = "https://iov-proxy.herokuapp.com/"; //"http://bnsapi.iov.one:8000/username/resolve/";
 const resolvers = {
   iov: async address => {
-    const resolved = await axios.get(
-      `http://bnsapi.iov.one:8000/username/resolve/${address}`
-    );
-    if (resolved && resolved.targets) {
-      const addr = resolved.targets.find(
-        target => target.blockchain_id === "eth"
+    const { data } = await axios.get(`${iovUrl}${address}`);
+    if (data && data.targets) {
+      const addr = data.targets.find(
+        target => target.blockchain_id === "ethereum-eip155-1"
       );
       if (addr.address) {
         return addr.address;
@@ -48,43 +47,51 @@ const resolvers = {
 
 // ------------------
 
-let payer = "";
-
-const payerField = document.getElementById("payer");
+const payerField = document.getElementById("payer-field");
+const payerInput = document.getElementById("payer");
 const payerOutput = document.getElementById("payer-output");
 
+const paymentField = document.getElementById("payment-field");
+const paymentInput = document.getElementById("payment");
+const paymentOutput = document.getElementById("payment-output");
+
+const submitField = document.getElementById("submit-field");
+const submit = document.getElementById("submit");
+const dump = document.getElementById("dump");
+
+// ------------------
+
+let payer = "";
+
 const checkPayer = async () => {
-  payer = await resolveAddress(payerField.value);
+  payerField.classList.add("with-loader");
+  payer = await resolveAddress(payerInput.value);
   if (payer === "0x0000000000000000000000000000000000000000") {
     payer = "address no set";
   }
   payerOutput.innerHTML = payer;
+  payerField.classList.remove("with-loader");
 };
-payerField.addEventListener("blur", checkPayer);
-if (payerField.value) {
+payerInput.addEventListener("blur", checkPayer);
+if (payerInput.value) {
   checkPayer();
 }
 
 let payment = "";
 
-const paymentField = document.getElementById("payment");
-const paymentOutput = document.getElementById("payment-output");
-
 const checkPayment = async () => {
-  payment = await resolveAddress(paymentField.value);
+  paymentField.classList.add("with-loader");
+  payment = await resolveAddress(paymentInput.value);
   if (payment === "0x0000000000000000000000000000000000000000") {
     payment = "address no set";
   }
   paymentOutput.innerHTML = payment;
+  paymentField.classList.remove("with-loader");
 };
-paymentField.addEventListener("blur", checkPayment);
-if (paymentField.value) {
+paymentInput.addEventListener("blur", checkPayment);
+if (paymentInput.value) {
   checkPayment();
 }
-
-// --------------------
-const submit = document.getElementById("submit");
-const dump = document.getElementById("dump");
 
 submit.addEventListener("click", async () => {
   const amount = web3.utils.toWei(document.getElementById("amount").value);
@@ -95,12 +102,15 @@ submit.addEventListener("click", async () => {
 
   if (!web3.utils.isAddress(payer)) {
     alert("Invalid payer address");
+    return;
   }
 
   if (!web3.utils.isAddress(payment)) {
     alert("Invalid payment address");
+    return;
   }
 
+  submitField.classList.add("with-loader");
   const request = await sendRequest(amount, payer, payment);
   if (request.data.requestId) {
     alert("Request created");
@@ -109,6 +119,7 @@ submit.addEventListener("click", async () => {
     alert("Failed creating request");
     dump.innerHTML = JSON.stringify(request.data, null, 2);
   }
+  submitField.classList.remove("with-loader");
 });
 
 const API_KEY = "5BZDB1W-NK14FAC-JEGHZ4X-58847YM";

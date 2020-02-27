@@ -1,0 +1,67 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+html {
+  background-color: #137b85;
+  color: #fff;
+}
+
+body {
+  font-family: Roboto, Helvetica, sans-serif;
+}
+
+.title,
+.label {
+  color: #fff;
+}
+
+.loading {
+  display: inline-block;
+  width: 33px;
+  height: 33px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+  -webkit-animation: spin 1s ease-in-out infinite;
+  margin: 3px 20px;
+}
+
+@keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+.with-loader::after {
+  content: "";
+  display: inline-block;
+  width: 33px;
+  height: 33px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+  -webkit-animation: spin 1s ease-in-out infinite;
+  margin: 3px 20px;
+}
+
+@keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+pre {
+  background: #111;
+  color: #fff;
+}

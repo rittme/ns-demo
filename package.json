@@ -7,14 +7,19 @@
   "browserslist": [
     "last 1 Chrome versions"
   ],
+  "homepage": "http://rittme.github.io/ns-demo",
   "dependencies": {
-    "@ensdomains/address-encoder": "^0.1.3",
     "axios": "^0.19.2",
-    "parcel": "^1.12.4",
     "web3": "^1.2.6"
   },
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "rm -rf dist && parcel build index.html",
+    "predeploy": "rm -rf dist && parcel build index.html --public-url /ns-demo",
+    "deploy": "gh-pages -d dist"
+  },
+  "devDependencies": {
+    "parcel": "^1.12.4",
+    "gh-pages": "^2.2.0"
   }
 }

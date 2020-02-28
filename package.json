@@ -10,14 +10,11 @@
   "dependencies": {
     "@ensdomains/address-encoder": "^0.1.3",
     "axios": "^0.19.2",
-    "express": "^4.17.1",
-    "node-fetch": "^2.6.0",
     "parcel": "^1.12.4",
     "web3": "^1.2.6"
   },
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html",
-    "proxy": "node iovproxy/index.js"
+    "build": "parcel build index.html"
   }
 }

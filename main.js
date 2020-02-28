@@ -22,7 +22,7 @@ const resolveAddress = address => {
   return "Invalid address";
 };
 
-const iovUrl = "https://iov-proxy.herokuapp.com/"; //"http://bnsapi.iov.one:8000/username/resolve/";
+const iovUrl = "https://bnsapi.iov.one/username/resolve/";
 const resolvers = {
   iov: async address => {
     const { data } = await axios.get(`${iovUrl}${address}`);

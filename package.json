@@ -9,7 +9,7 @@
   ],
   "homepage": "http://rittme.github.io/ns-demo",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "web3": "^1.2.6"
   },
   "scripts": {
